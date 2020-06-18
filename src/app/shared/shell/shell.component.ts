@@ -1,6 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -17,7 +18,7 @@ export class ShellComponent implements OnInit {
       shareReplay()
     );
 
-  isAuth$: Observable<boolean>;
+  isAuth$: Observable<User>;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -25,6 +26,6 @@ export class ShellComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isAuth$ = this.afAuth.authState.pipe(map((user) => !!user));
+    this.isAuth$ = this.afAuth.authState;
   }
 }

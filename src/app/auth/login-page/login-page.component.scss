@@ -1,0 +1,16 @@
+button {
+  cursor: pointer;
+  padding: 5px 10px 5px 10px;
+  vertical-align: baseline;
+  img {
+    width: 1.25em;
+  }
+}
+
+:host {
+  text-align: center;
+}
+
+.logout {
+  padding-top: 5em;
+}

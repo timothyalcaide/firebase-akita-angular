@@ -12,7 +12,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { GoogleSigninDirective } from './google-signin.directive';
 import { ShellComponent } from './shell/shell.component';
+
+const directives = [GoogleSigninDirective];
 
 const components = [ShellComponent];
 
@@ -34,8 +37,8 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [...components],
   imports: [...modules],
-  exports: [...components, ...modules],
+  declarations: [...components, ...directives],
+  exports: [...components, ...modules, ...directives],
 })
 export class SharedModule {}

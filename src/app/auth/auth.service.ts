@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -13,17 +13,24 @@ import { User } from './user.model';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService implements OnInit {
+export class AuthService {
   user$: Observable<User>;
 
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.getAuth();
+  ) {
+    // Get the auth state, then fetch the Firestore user document or return null
+    this.user$ = this.afAuth.authState.pipe(
+      switchMap((user: User) => {
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          return of(null);
+        }
+      })
+    );
   }
 
   async googleSignin() {
@@ -49,18 +56,5 @@ export class AuthService implements OnInit {
       photoURL: user.photoURL,
     };
     return userRef.set(data, { merge: true });
-  }
-
-  // Get the auth state, then fetch the Firestore user document or return null
-  private getAuth() {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap((user: User) => {
-        if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
-      })
-    );
   }
 }
