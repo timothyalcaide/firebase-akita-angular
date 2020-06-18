@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "akita-tuto": {
+      "hosting": {
+        "firebase-akita-angular": [
+          "akita-tuto"
+        ]
+      }
+    }
+  }
+}

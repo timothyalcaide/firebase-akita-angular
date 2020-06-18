@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "firebase-akita-angular",
+      "public": "dist/firebase-akita-angular",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

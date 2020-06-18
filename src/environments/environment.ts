@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyChQHNRDGfQJM8-8GWQzLoby-ErhlxHCrA',
+    authDomain: 'akita-tuto.firebaseapp.com',
+    databaseURL: 'https://akita-tuto.firebaseio.com',
+    projectId: 'akita-tuto',
+    storageBucket: 'akita-tuto.appspot.com',
+    messagingSenderId: '220634745718',
+    appId: '1:220634745718:web:97ab4da1bc5c80661f8857',
+    measurementId: 'G-751MSE0PFF',
+  },
 };
 
 /*
