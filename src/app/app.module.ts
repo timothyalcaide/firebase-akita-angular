@@ -17,7 +17,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFirestoreModule,
     SharedModule,
   ],
   providers: [],

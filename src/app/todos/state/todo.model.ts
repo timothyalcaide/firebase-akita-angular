@@ -1,15 +1,13 @@
-import { guid, ID } from '@datorama/akita';
-
 export type Todo = {
-  id: ID;
+  id: string;
   title: string;
   completed: boolean;
 };
 
-export function createTodo(title: Todo['title']) {
+export function createTodo({ id, title }: Partial<Todo>) {
   return {
-    id: guid(),
+    id,
     title,
-    completed: false
+    completed: false,
   } as Todo;
 }

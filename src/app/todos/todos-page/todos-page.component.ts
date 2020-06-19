@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  EntityStateHistoryPlugin,
+  isUndefined,
+  StateHistoryPlugin,
+} from '@datorama/akita';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { initialFilters, VISIBILITY_FILTER } from '../filter/filter.model';
 import { Todo } from '../state/todo.model';
 import { TodosQuery } from '../state/todos.query';
 import { TodosService } from '../state/todos.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ID, isUndefined, StateHistoryPlugin, EntityStateHistoryPlugin } from '@datorama/akita';
 
 @Component({
   selector: 'app-todos-page',
   templateUrl: './todos-page.component.html',
-  styleUrls: ['./todos-page.component.css']
+  styleUrls: ['./todos-page.component.css'],
 })
 export class TodosPageComponent implements OnInit {
   todos$: Observable<Todo[]>;
@@ -21,12 +25,20 @@ export class TodosPageComponent implements OnInit {
   stateHistory: StateHistoryPlugin;
   stateHistoryEntity: EntityStateHistoryPlugin;
 
-  constructor(private todosQuery: TodosQuery, private todosService: TodosService) {}
+  constructor(
+    private todosQuery: TodosQuery,
+    private todosService: TodosService
+  ) {}
 
   ngOnInit() {
     this.todos$ = this.todosQuery.selectVisibleTodos$;
     this.activeFilter$ = this.todosQuery.selectVisibilityFilter$;
-    this.checkAll$ = this.todosQuery.checkAll$.pipe(map(numCompleted => numCompleted && numCompleted === this.todosQuery.getCount()));
+    this.checkAll$ = this.todosQuery.checkAll$.pipe(
+      map(
+        (numCompleted) =>
+          numCompleted && numCompleted === this.todosQuery.getCount()
+      )
+    );
     this.stateHistory = new StateHistoryPlugin(this.todosQuery);
     this.stateHistoryEntity = new EntityStateHistoryPlugin(this.todosQuery);
   }
@@ -66,7 +78,7 @@ export class TodosPageComponent implements OnInit {
     this.todosService.complete(_todo);
   }
 
-  delete(id: ID) {
+  delete(id: string) {
     this.todosService.delete(id);
   }
 
