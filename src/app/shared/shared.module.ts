@@ -12,10 +12,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { GoogleSigninDirective } from './google-signin.directive';
 import { ShellComponent } from './shell/shell.component';
 
-const directives = [GoogleSigninDirective];
+const directives = [GoogleSigninDirective, DeleteButtonComponent];
 
 const components = [ShellComponent];
 

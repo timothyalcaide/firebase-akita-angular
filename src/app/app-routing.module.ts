@@ -8,6 +8,11 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: 'kanban',
+    loadChildren: () =>
+      import('./kanban/kanban.module').then((m) => m.KanbanModule),
+  },
 ];
 
 @NgModule({
