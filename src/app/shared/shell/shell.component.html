@@ -11,12 +11,12 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/" (click)="drawer.close()">Home</a>
       <a mat-list-item routerLink="/login" (click)="drawer.close()">Login</a>
-      <a mat-list-item routerLink="/movies" (click)="drawer.close()">Movies</a>
+      <a mat-list-item routerLink="/movies" (click)="drawer.close()"
+        >🎬Movies</a
+      >
+      <a mat-list-item routerLink="/todos" (click)="drawer.close()">👀Todos</a>
       <a mat-list-item routerLink="/kanban" (click)="drawer.close()"
         >Kanban Demo</a
-      >
-      <a mat-list-item routerLink="/customers" (click)="drawer.close()"
-        >SSR Demo</a
       >
     </mat-nav-list>
   </mat-sidenav>
