@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./kanban/kanban.module').then((m) => m.KanbanModule),
   },
+  {
+    path: 'movies',
+    loadChildren: () =>
+      import('./movies/movies.module').then((m) => m.MoviesModule),
+  },
 ];
 
 @NgModule({
